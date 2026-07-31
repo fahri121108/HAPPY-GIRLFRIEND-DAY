@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🤍 Happy Girlfriend Day 🤍</title>
+  <style>
+    * { margin:0; padding:0; box-sizing:border-box; font-family:'Segoe UI', sans-serif; }
+    body { background:linear-gradient(135deg, #ff9a9e 0%, #fad0c4 50%, #ffecd2 100%); min-height:100vh; overflow-x:hidden; }
+
+    /* === ANIMASI AWAL MASUK === */
+    .intro-screen {
+      position:fixed; inset:0; background:linear-gradient(135deg, #ff6b9d, #c44569);
+      display:flex; flex-direction:column; align-items:center; justify-content:center;
+      z-index:9999; transition:opacity 1.5s ease, transform 1.5s ease;
+    }
+    .intro-screen.hidden { opacity:0; transform:scale(1.1); pointer-events:none; }
+    .intro-text {
+      color:white; font-size:clamp(2.2rem,6vw,3.5rem); font-weight:bold; text-align:center;
+      opacity:0; transform:translateY(40px); animation:fadeInUp 2.5s ease forwards;
+      text-shadow:0 0 20px rgba(255,255,255,0.6); padding:20px;
+    }
+    .intro-sub {
+      color:#fff8dc; font-size:clamp(1rem,3vw,1.4rem); margin-top:20px;
+      opacity:0; animation:fadeInUp 2.5s ease 1s forwards;
+    }
+    @keyframes fadeInUp {
+      to { opacity:1; transform:translateY(0); }
+    }
+    .heart-float {
+      font-size:3rem; margin:20px 0;
+      animation: heartbeat 1.2s ease-in-out infinite alternate;
+    }
+    @keyframes heartbeat {
+      from { transform:scale(1); }
+      to { transform:scale(1.3); }
+    }
+
+    /* === KOTAK DENGAN BINGKAI WARNA-WARNI === */
+    .glow-box {
+      position:relative; border-radius:20px; padding:5px; margin:20px auto;
+      max-width:900px; background:linear-gradient(45deg, #ff4757, #ffa502, #2ed573, #1e90ff, #a855f7, #ff4757);
+      background-size:400% 400%; animation:rainbowBorder 3s ease infinite;
+    }
+    @keyframes rainbowBorder {
+      0% { background-position:0% 50%; }
+      50% { background-position:100% 50%; }
+      100% { background-position:0% 50%; }
+    }
+    .inner-box {
+      background:white; border-radius:18px; padding:20px; overflow:hidden;
+    }
+
+    /* === KONTEN UTAMA === */
+    .main-content {
+      opacity:0; transform:translateY(30px); transition:all 1.5s ease;
+      padding:20px; max-width:950px; margin:0 auto;
+    }
+    .main-content.show { opacity:1; transform:translateY(0); }
+    .title {
+      text-align:center; color:#c44569; font-size:clamp(1.8rem,5vw,2.8rem);
+      margin:20px 0; text-shadow:2px 2px 4px rgba(196,69,105,0.2);
+    }
+    .ucapan {
+      text-align:center; color:#5c2b47; font-size:1.1rem; line-height:1.8;
+      margin-bottom:30px; padding:0 10px;
+    }
+
+    /* === GESER FOTO === */
+    .slider-container { position:relative; overflow:hidden; border-radius:15px; }
+    .slider-wrapper {
+      display:flex; transition:transform 0.5s ease-out; will-change:transform;
+    }
+    .slide { flex:0 0 100%; padding:0 5px; }
+    .slide img {
+      width:100%; height:auto; max-height:550px; object-fit:cover;
+      border-radius:12px; box-shadow:0 4px 15px rgba(0,0,0,0.1);
+    }
+    .nav-btn {
+      position:absolute; top:50%; transform:translateY(-50%);
+      background:rgba(255,255,255,0.9); border:none; width:45px; height:45px;
+      border-radius:50%; font-size:22px; color:#c44569; cursor:pointer;
+      display:flex; align-items:center; justify-content:center;
+      box-shadow:0 2px 10px rgba(0,0,0,0.15); transition:all 0.3s ease;
+      z-index:10;
+    }
+    .nav-btn:hover { background:#c44569; color:white; transform:translateY(-50%) scale(1.1); }
+    .prev { left:10px; }
+    .next { right:10px; }
+    .dots { text-align:center; margin-top:15px; }
+    .dot {
+      width:12px; height:12px; border-radius:50%; background:#ffb3c6;
+      display:inline-block; margin:0 5px; cursor:pointer; transition:all 0.3s;
+    }
+    .dot.active { background:#c44569; transform:scale(1.3); }
+
+    /* === TOMBOL HIASAN === */
+    .btn-love {
+      display:block; margin:30px auto; padding:12px 30px;
+      background:linear-gradient(135deg,#ff6b9d,#c44569); color:white;
+      border:none; border-radius:50px; font-size:1.1rem; cursor:pointer;
+      box-shadow:0 4px 15px rgba(196,69,105,0.3);
+      transition:all 0.3s ease;
+    }
+    .btn-love:hover { transform:translateY(-3px); box-shadow:0 6px 20px rgba(196,69,105,0.4); }
+    .btn-love:active { transform:scale(0.95); }
+    .heart-burst {
+      position:fixed; pointer-events:none; z-index:999;
+      animation:burstUp 1.2s ease-out forwards;
+    }
+    @keyframes burstUp {
+      0% { opacity:1; transform:translateY(0) scale(1); }
+      100% { opacity:0; transform:translateY(-150px) scale(1.5); }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Layar Pembuka -->
+<div class="intro-screen" id="introScreen">
+  <div class="heart-float">🤍</div>
+  <h1 class="intro-text">🤍 HAPPY GIRLFRIEND 🤍</h1>
+  <p class="intro-sub">Untuk orang teristimewa di hatiku 🤍<br>— Semua yang indah, untukmu —</p>
+</div>
+
+<!-- Isi Utama -->
+<div class="main-content" id="mainContent">
+  <h1 class="title">💖 Untuk Kekasih Hatiku 💖</h1>
+
+  <div class="glow-box">
+    <div class="inner-box ucapan">
+      <p>Selamat hari-hari yang indah, sayangku! 💕</p>
+      <p>Semoga hari-harimu selalu penuh senyum, kebahagiaan, dan cinta yang tak pernah habis. Kamu adalah alasan kenapa setiap hariku terasa indah dan berwarna. Tetaplah bersinar seperti bintang yang selalu menerangi hidupku. Aku menyayangimu selalu, hari ini, esok, dan selamanya! 🤍🌹</p>
+    </div>
+  </div>
+
+  <div class="glow-box">
+    <div class="inner-box">
+      <div class="slider-container">
+        <div class="slider-wrapper" id="sliderWrapper">
+          <!-- 📸 TAMBAH FOTO DI SINI -->
+          <div class="slide"><img src="poto.jpg" alt="Foto 1"></div>
+          <div class="slide"><img src="poto2.jpg" alt="Foto 2"></div>
+          <div class="slide"><img src="poto3.jpg" alt="Foto 3"></div>
+          <div class="slide"><img src="poto4.jpg" alt="Foto 4"></div>
+          <div class="slide"><img src="poto5.jpg" alt="Foto 5"></div>
+        </div>
+        <button class="nav-btn prev" id="prevBtn">❮</button>
+        <button class="nav-btn next" id="nextBtn">❯</button>
+      </div>
+      <div class="dots" id="dotsBox"></div>
+    </div>
+  </div>
+
+  <button class="btn-love" id="loveBtn">❤️ Klik untuk cinta ❤️</button>
+</div>
+
+<script>
+// === HILANGKAN LAYAR PEMBUKA ===
+setTimeout(() => {
+  document.getElementById('introScreen').classList.add('hidden');
+  document.getElementById('mainContent').classList.add('show');
+}, 3500); // tampil 3,5 detik lalu hilang
+
+// === SLIDER FOTO ===
+const slider = document.getElementById('sliderWrapper');
+const slides = document.querySelectorAll('.slide');
+const prevBtn = document.getElementById('prevBtn');
+const nextBtn = document.getElementById('nextBtn');
+const dotsBox = document.getElementById('dotsBox');
+
+let currentIndex = 0;
+const totalSlides = slides.length;
+
+// buat titik indikator
+for(let i=0; i<totalSlides; i++){
+  const d = document.createElement('span');
+  d.className = 'dot' + (i===0 ? ' active' : '');
+  d.onclick = () => goToSlide(i);
+  dotsBox.appendChild(d);
+}
+const dots = document.querySelectorAll('.dot');
+
+function updateSlider(){
+  slider.style.transform = `translateX(-${currentIndex * 100}%)`;
+  dots.forEach((d,i)=> d.classList.toggle('active', i===currentIndex));
+}
+function goToSlide(idx){
+  if(idx<0) idx=totalSlides-1;
+  if(idx>=totalSlides) idx=0;
+  currentIndex=idx;
+  updateSlider();
+}
+prevBtn.onclick = ()=> goToSlide(currentIndex-1);
+nextBtn.onclick = ()=> goToSlide(currentIndex+1);
+
+// geser sentuh
+let startX=0, isDown=false;
+slider.addEventListener('touchstart',e=>{ startX=e.touches[0].clientX; isDown=true; });
+slider.addEventListener('touchend',()=>{ isDown=false; });
+slider.addEventListener('touchmove',e=>{
+  if(!isDown) return;
+  const diff = startX - e.touches[0].clientX;
+  if(Math.abs(diff) > 60){
+    goToSlide(currentIndex + (diff>0?1:-1));
+    isDown=false;
+  }
+});
+
+// === TOMBOL CINTA DENGAN ANIMASI HATI MELETUP ===
+document.getElementById('loveBtn').onclick = function(e){
+  for(let i=0; i<10; i++){
+    setTimeout(()=>{
+      const h = document.createElement('div');
+      h.className = 'heart-burst';
+      h.innerText = ['❤️','💕','💖','💗','💓'][Math.floor(Math.random()*5)];
+      h.style.left = e.pageX + (Math.random()*80-40) + 'px';
+      h.style.top = e.pageY + 'px';
+      h.style.fontSize = (18+Math.random()*16)+'px';
+      document.body.appendChild(h);
+      setTimeout(()=>h.remove(),1200);
+    }, i*80);
+  }
+};
+</script>
+</body>
+</html>
