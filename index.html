@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Happy Girlfriend Day 💖</title>
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html, body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+body {
+    background: linear-gradient(180deg, #0f173a 0%, #1a2460 50%, #253075 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: Arial, sans-serif;
+}
+
+/* === KARTU UTAMA — BENTUK & UKURAN TETAP === */
+.kartu {
+    width: 90%;
+    max-width: 400px;
+    background: rgba(26, 34, 80, 0.85);
+    border: 4px solid;
+    border-image: linear-gradient(135deg, #7fa8ff, #c084ff, #ff9de0) 1;
+    border-radius: 28px;
+    padding: 22px 18px 18px;
+    position: relative;
+    box-shadow: 0 0 30px rgba(127, 168, 255, 0.25);
+}
+
+/* === SUDUT HIASAN === */
+.sudut {
+    position: absolute;
+    width: 28px;
+    height: 28px;
+    border: 3px solid #7fa8ff;
+}
+.sudut.tl { top: 10px; left: 10px; border-right: 0; border-bottom: 0; border-radius: 10px 0 0 0; }
+.sudut.tr { top: 10px; right: 10px; border-left: 0; border-bottom: 0; border-radius: 0 10px 0 0; }
+.sudut.bl { bottom: 10px; left: 10px; border-right: 0; border-top: 0; border-radius: 0 0 0 10px; }
+.sudut.br { bottom: 10px; right: 10px; border-left: 0; border-top: 0; border-radius: 0 0 10px 0; }
+
+/* === HALAMAN SEMUA TERSEMBUNYI DULU === */
+.halaman { display: none; }
+#hal1 { display: block; }
+
+/* === HALAMAN 1: PEMBUKA === */
+.hal1-isi {
+    text-align: center;
+    padding: 40px 20px 30px;
+    color: #fff;
+}
+.hati-besar {
+    font-size: 90px;
+    animation: detak 1s infinite;
+    margin-bottom: 20px;
+}
+@keyframes detak {
+    0%,100% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+}
+.hal1-judul {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 12px;
+    background: linear-gradient(90deg, #ff9de0, #ffd166, #7fa8ff);
+    -webkit-background-clip: text;
+    color: transparent;
+}
+.hal1-desk {
+    font-size: 15px;
+    color: #cdd6ff;
+    margin-bottom: 25px;
+    line-height: 1.6;
+}
+.tombol-buka {
+    padding: 12px 30px;
+    border-radius: 50px;
+    border: none;
+    background: linear-gradient(135deg, #ff7ebd, #ff9a76);
+    color: #fff;
+    font-size: 17px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 6px 20px rgba(255, 126, 189, 0.35);
+}
+
+/* === HALAMAN 2: GOSOK KARTU === */
+.hal2-atas {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 10px;
+}
+.hal2-judul {
+    font-size: 20px;
+    font-weight: bold;
+    color: #fff;
+}
+.hal2-desc {
+    text-align: center;
+    font-size: 15px;
+    color: #ffd166;
+    margin-bottom: 15px;
+}
+
+/* === KOTAK GOSOK === */
+.wadah-gosok {
+    position: relative;
+    width: 100%;
+    height: 240px;
+    border-radius: 18px;
+    border: 3px solid #7fa8ff;
+    overflow: hidden;
+}
+/* Teks di bawah — SELALU ADA, tertutup lapisan gosok */
+.lapisan-bawah {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: #fff;
+    color: #d63384;
+    font-size: 28px;
+    font-weight: bold;
+    line-height: 1.3;
+    text-align: center;
+    z-index: 1;
+}
+/* Kanvas lapisan gosok — di atas, perlahan hilang saat digosok */
+#kanvas-gosok {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    touch-action: none;
+    z-index: 2;
+}
+.hal2-bawah {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 12px;
+    padding: 0 10px;
+    font-size: 15px;
+    color: #ffd166;
+    font-weight: bold;
+}
+
+/* === HALAMAN 3: SUDAH BERSIH === */
+.hal3-isi { text-align: center; padding: 10px 0; }
+.hal3-teks {
+    font-size: 17px;
+    color: #ffd166;
+    margin-top: 12px;
+}
+
+/* === HALAMAN 4: PESAN === */
+.area-foto {
+    text-align: center;
+    margin-bottom: 10px;
+    position: relative;
+}
+.bulat-foto {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    background: #fff;
+    margin: 10px auto;
+    overflow: hidden;
+    border: 3px solid #ff9de0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.bulat-foto img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.katakata {
+    position: absolute;
+    top: -5px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #fff;
+    color: #333;
+    font-size: 13px;
+    font-weight: bold;
+    padding: 3px 8px;
+    border-radius: 10px;
+    white-space: nowrap;
+    z-index: 2;
+}
+.katakata::after {
+    content: "";
+    position: absolute;
+    bottom: -5px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 6px solid #fff;
+}
+.tanggal {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 14px;
+    color: #cdd6ff;
+    margin: 8px 0;
+}
+.judul-pesan {
+    font-size: 22px;
+    font-weight: bold;
+    color: #fff;
+    margin-bottom: 12px;
+}
+.teks-pesan {
+    background: rgba(255,255,255,0.08);
+    border-radius: 15px;
+    padding: 15px;
+    font-size: 15px;
+    line-height: 1.7;
+    color: #e8edff;
+    height: 220px;
+    overflow-y: auto;
+}
+.kursor {
+    display: inline-block;
+    width: 3px;
+    height: 18px;
+    background: #fff;
+    animation: kedip 1s infinite;
+    margin-left: 3px;
+}
+@keyframes kedip {
+    0%,49% { opacity: 1; }
+    50%,100% { opacity: 0; }
+}
+</style>
+</head>
+<body>
+
+<div class="kartu">
+    <span class="sudut tl"></span><span class="sudut tr"></span>
+    <span class="sudut bl"></span><span class="sudut br"></span>
+
+    <!-- HALAMAN 1: PEMBUKA -->
+    <div id="hal1" class="halaman">
+        <div class="hal1-isi">
+            <div class="hati-besar">💖</div>
+            <div class="hal1-judul">Ada Sesuatu Nih... 🥰</div>
+            <div class="hal1-desk">Ada pesan spesial yang aku buat khusus buat kamu 💌</div>
+            <button class="tombol-buka" onclick="gantiHal('hal1','hal2')">Buka Pesan Nya 🫶</button>
+        </div>
+    </div>
+
+    <!-- HALAMAN 2: GOSOK KARTU — Teks MUNCUL PERLAHAN saat digosok -->
+    <div id="hal2" class="halaman">
+        <div class="hal2-atas">
+            <span style="font-size:20px;">🧧</span>
+            <h2 class="hal2-judul">Coba Gosok Kartunya</h2>
+            <span style="font-size:18px;">📼</span>
+        </div>
+        <p class="hal2-desc">☀️ Ada pesan spesial di baliknya! 😏 ❤️</p>
+        <div class="wadah-gosok">
+            <!-- Teks SELALU ADA DI BAWAH → muncul perlahan saat lapisan atas digosok -->
+            <div class="lapisan-bawah">
+                Happy National<br>
+                Girlfriend Day!<br>
+                💖💍
+            </div>
+            <!-- Lapisan gosok di ATAS → perlahan hilang saat digosok -->
+            <canvas id="kanvas-gosok"></canvas>
+        </div>
+        <div class="hal2-bawah">
+            <span>🌸</span>
+            <span>Gosok sampai tuntas yaa ✨</span>
+            <span>⭐</span>
+        </div>
+    </div>
+
+    <!-- HALAMAN 3: SUDAH BERSIH -->
+    <div id="hal3" class="halaman">
+        <div class="hal2-atas">
+            <span style="font-size:20px;">🧧</span>
+            <h2 class="hal2-judul">Coba Gosok Kartunya</h2>
+            <span style="font-size:18px;">📼</span>
+        </div>
+        <p class="hal2-desc">☀️ Ada pesan spesial di baliknya! 😏 ❤️</p>
+        <div class="wadah-gosok" style="background:#fff;">
+            <div class="lapisan-bawah">
+                Happy National<br>
+                Girlfriend Day!<br>
+                💖💍
+            </div>
+        </div>
+        <p class="hal3-teks">Yeayy udah bersih! 🎉✨</p>
+    </div>
+
+    <!-- HALAMAN 4: PESAN + FOTO poto.jpg -->
+    <div id="hal4" class="halaman">
+        <div style="text-align:right; font-size:24px; margin-bottom:5px;">💌</div>
+        <div class="area-foto">
+            <span class="katakata">辛苦了~</span>
+            <div class="bulat-foto">
+                <img src="poto.jpg" alt="foto profil" onerror="this.style.display='none';this.parentElement.innerHTML='🐱🐱'">
+            </div>
+        </div>
+        <div class="tanggal">❤️ Sabtu, 1 Agustus</div>
+        <h2 class="judul-pesan">Happy Girlfriend Day! 🥳💖🎉</h2>
+        <div class="teks-pesan" id="areaPesan">
+            <span id="isiPesan"></span><span class="kursor"></span>
+        </div>
+    </div>
+
+</div>
+
+<audio id="lagu" src="gril.mp3" loop>
+
+<script>
+var lagu = document.getElementById('lagu');
+lagu.volume = 0.7;
+
+// === GANTI HALAMAN + PUTAR LAGU ===
+function gantiHal(dari, ke) {
+    document.getElementById(dari).style.display = 'none';
+    document.getElementById(ke).style.display = 'block';
+
+    // Putar lagu di halaman 2 & 3
+    if(ke === 'hal2' || ke === 'hal3') {
+        lagu.play().catch(e=>console.log('Lagu siap'));
+    }
+
+    if(ke === 'hal2') setTimeout(mulaiGambar, 50);
+    if(ke === 'hal3') setTimeout(()=>gantiHal('hal3','hal4'), 2000);
+    if(ke === 'hal4') setTimeout(mulaiKetik, 300);
+}
+
+// === GOSOK KARTU — TEKS MUNCUL PERLAHAN ===
+var kanvas, ctx, selesai = false;
+function mulaiGambar() {
+    kanvas = document.getElementById('kanvas-gosok');
+    var kotak = kanvas.getBoundingClientRect();
+    kanvas.width = kotak.width;
+    kanvas.height = kotak.height;
+    ctx = kanvas.getContext('2d');
+
+    // Latar gosok — menutupi teks dari awal
+    var g = ctx.createLinearGradient(0,0,kanvas.width,kanvas.height);
+    g.addColorStop(0, '#a6c9ff');
+    g.addColorStop(0.5, '#d4c8ff');
+    g.addColorStop(1, '#ffcce0');
+    ctx.fillStyle = g;
+    ctx.fillRect(0,0,kanvas.width,kanvas.height);
+
+    // Garis miring
+    ctx.globalAlpha = 0.25;
+    ctx.strokeStyle = '#fff';
+    ctx.lineWidth = 6;
+    for(var i=-kanvas.height; i<kanvas.width*2; i+=32) {
+        ctx.beginPath();
+        ctx.moveTo(i,0); ctx.lineTo(i-kanvas.height, kanvas.height);
+        ctx.stroke();
+    }
+    ctx.globalAlpha = 1;
+
+    // Hiasan
+    var hiasan = [['✨',0.15,0.2],['💖',0.4,0.3],['⭐',0.7,0.25],['✨',0.85,0.5],['💖',0.2,0.6],['⭐',0.6,0.75],['✨',0.3,0.85]];
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    hiasan.forEach(h=>{ ctx.font='20px Arial'; ctx.fillText(h[0], h[1]*kanvas.width, h[2]*kanvas.height); });
+
+    // Teks gosok
+    ctx.fillStyle = '#fff';
+    ctx.font = 'bold 22px Arial';
+    ctx.fillText('✨ Gosok Disini ✨', kanvas.width/2, kanvas.height/2);
+
+    // Event gosok
+    kanvas.onmousedown = kanvas.ontouchstart = mulaiGo;
+    window.onmousemove = window.ontouchmove = saatGo;
+    window.onmouseup = window.ontouchend = selesaiGo;
+}
+
+var sedangGo = false;
+function pos(e) {
+    var k = kanvas.getBoundingClientRect();
+    var t = e.touches ? e.touches[0] : e;
+    return { x: t.clientX - k.left, y: t.clientY - k.top };
+}
+function mulaiGo(e) { e.preventDefault(); sedangGo=true; gores(pos(e)); }
+function saatGo(e) { if(!sedangGo)return; e.preventDefault(); gores(pos(e)); }
+function selesaiGo() { sedangGo=false; cekBersih(); }
+function gores(p) {
+    // Bagian yang digosok → lapisan atas jadi transparan → TEKS DI BAWAH MUNCUL
+    ctx.globalCompositeOperation='destination-out';
+    ctx.beginPath();
+    ctx.arc(p.x, p.y, 35, 0, Math.PI*2);
+    ctx.fill();
+}
+function cekBersih() {
+    if(selesai) return;
+    var d = ctx.getImageData(0,0,kanvas.width,kanvas.height).data;
+    var bening=0;
+    for(var i=3; i<d.length; i+=4) if(d[i]===0) bening++;
+    if(bening/(d.length/4) > 0.65) {
+        selesai=true;
+        gantiHal('hal2','hal3');
+    }
+}
+
+// === KETIK PESAN PANJANG ===
+var teksAsli = `Halo sayangku 💖🌸,
+
+Selamat Hari Pacar Nasional ya! 🥳💖
+
+Aku bersyukur banget punya kamu. Makasih ya karena kamu selalu ada, sabar, dan ngertiin aku dalam segala hal. Maaf kalau aku masih banyak kurangnya, sering bikin kesel, kecewa, atau bikin kamu nunggu. Aku belajar dari semuanya dan berusaha terus jadi lebih baik buat kamu. 🤍
+
+Kamu adalah anugerah terindah yang pernah Tuhan kasih ke aku. Senyum kamu bikin haraku cerah, pelukan kamu bikin aku merasa aman dan tenang. 🥺🌸
+
+Aku pengen kita terus bareng selamanya. Lewatin suka maupun duka, hari-hari biasa maupun hari-hari yang berat, semuanya kita hadapi bersama-sama. Tangan kamu yang selalu menggandeng tanganku, jangan pernah lepas ya? 🫶
+
+Maafin segala kekuranganku ya sayang. Aku janji akan selalu berusaha menjaga hati kamu, menjaga hubungan kita, dan bikin kamu bahagia setiap hari. Karena kebahagiaan kamu itu juga kebahagiaanku. 💞
+
+Aku sayang kamu, sangat sayang, lebih dari yang bisa aku ucapkan. Semoga kita bisa terus tumbuh bersama, saling melengkapi, dan menua bersama kelak. 💍
+
+Terima kasih sudah mencintaiku apa adanya. Aku sayang kamu selamanya, hari ini, besok, dan seterusnya! 💌❤️`;
+
+function mulaiKetik() {
+    var tempat = document.getElementById('isiPesan');
+    var kotak = document.getElementById('areaPesan');
+    var i=0; tempat.innerHTML='';
+    function ketik() {
+        if(i>=teksAsli.length) { document.querySelector('.kursor').style.display='none'; return; }
+        var h = teksAsli[i++];
+        if(h==='\n') tempat.innerHTML += '<br>';
+        else tempat.innerHTML += h;
+        kotak.scrollTop = kotak.scrollHeight;
+        setTimeout(ketik, 55);
+    }
+    ketik();
+}
+</script>
+
+</body>
+</html>
