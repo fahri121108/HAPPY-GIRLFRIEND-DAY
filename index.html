@@ -263,7 +263,7 @@ body {
     <!-- HALAMAN 1: PEMBUKA -->
     <div id="hal1" class="halaman">
         <div class="hal1-isi">
-            <div class="hati-besar">💖</div>
+            <div class="hati-besar">🤍</div>
             <div class="hal1-judul">Ada Sesuatu Nih... 🥰</div>
             <div class="hal1-desk">Ada pesan spesial yang aku buat khusus buat kamu 💌</div>
             <button class="tombol-buka" onclick="gantiHal('hal1','hal2')">Buka Pesan Nya 🫶</button>
@@ -277,13 +277,13 @@ body {
             <h2 class="hal2-judul">Coba Gosok Kartunya</h2>
             <span style="font-size:18px;">📼</span>
         </div>
-        <p class="hal2-desc">☀️ Ada pesan spesial di baliknya! 😏 ❤️</p>
+        <p class="hal2-desc">☀️ Ada pesan spesial di baliknya! 😏 🤍</p>
         <div class="wadah-gosok">
             <!-- Teks SELALU ADA DI BAWAH → muncul perlahan saat lapisan atas digosok -->
             <div class="lapisan-bawah">
                 Happy National<br>
                 Girlfriend Day!<br>
-                💖💍
+                🤍💍
             </div>
             <!-- Lapisan gosok di ATAS → perlahan hilang saat digosok -->
             <canvas id="kanvas-gosok"></canvas>
@@ -302,12 +302,12 @@ body {
             <h2 class="hal2-judul">Coba Gosok Kartunya</h2>
             <span style="font-size:18px;">📼</span>
         </div>
-        <p class="hal2-desc">☀️ Ada pesan spesial di baliknya! 😏 ❤️</p>
+        <p class="hal2-desc">☀️ Ada pesan spesial di baliknya! 😏 🤍</p>
         <div class="wadah-gosok" style="background:#fff;">
             <div class="lapisan-bawah">
                 Happy National<br>
                 Girlfriend Day!<br>
-                💖💍
+                🤍💍
             </div>
         </div>
         <p class="hal3-teks">Yeayy udah bersih! 🎉✨</p>
@@ -317,13 +317,13 @@ body {
     <div id="hal4" class="halaman">
         <div style="text-align:right; font-size:24px; margin-bottom:5px;">💌</div>
         <div class="area-foto">
-            <span class="katakata">辛苦了~</span>
+            <span class="katakata">MIAWW~</span>
             <div class="bulat-foto">
                 <img src="poto.jpg" alt="foto profil" onerror="this.style.display='none';this.parentElement.innerHTML='🐱🐱'">
             </div>
         </div>
-        <div class="tanggal">❤️ Sabtu, 1 Agustus</div>
-        <h2 class="judul-pesan">Happy Girlfriend Day! 🥳💖🎉</h2>
+        <div class="tanggal">💌 Sabtu, 1 Agustus</div>
+        <h2 class="judul-pesan">Happy Girlfriend Day! 🥳🤍🎉</h2>
         <div class="teks-pesan" id="areaPesan">
             <span id="isiPesan"></span><span class="kursor"></span>
         </div>
@@ -381,7 +381,7 @@ function mulaiGambar() {
     ctx.globalAlpha = 1;
 
     // Hiasan
-    var hiasan = [['✨',0.15,0.2],['💖',0.4,0.3],['⭐',0.7,0.25],['✨',0.85,0.5],['💖',0.2,0.6],['⭐',0.6,0.75],['✨',0.3,0.85]];
+    var hiasan = [['✨',0.15,0.2],['🤍',0.4,0.3],['⭐',0.7,0.25],['✨',0.85,0.5],['💖',0.2,0.6],['⭐',0.6,0.75],['✨',0.3,0.85]];
     ctx.textAlign = 'center';
     ctx.textBaseline = 'middle';
     hiasan.forEach(h=>{ ctx.font='20px Arial'; ctx.fillText(h[0], h[1]*kanvas.width, h[2]*kanvas.height); });
@@ -425,13 +425,13 @@ function cekBersih() {
 }
 
 // === KETIK PESAN PANJANG ===
-var teksAsli = `Halo sayangku 💖🌸,
+var teksAsli = `Halo sayangku 🤍🌸,
 
-Selamat Hari Pacar Nasional ya! 🥳💖
+Selamat Hari Pacar Nasional ya! 🥳🤍
 
 Aku bersyukur banget punya kamu. Makasih ya karena kamu selalu ada, sabar, dan ngertiin aku dalam segala hal. Maaf kalau aku masih banyak kurangnya, sering bikin kesel, kecewa, atau bikin kamu nunggu. Aku belajar dari semuanya dan berusaha terus jadi lebih baik buat kamu. 🤍
 
-Kamu adalah anugerah terindah yang pernah Tuhan kasih ke aku. Senyum kamu bikin haraku cerah, pelukan kamu bikin aku merasa aman dan tenang. 🥺🌸
+Kamu adalah anugerah terindah yang pernah Tuhan kasih ke aku. Senyum kamu bikin haraku cerah, pelukan kamu bikin aku merasa aman dan tenang. 🥺🤍
 
 Aku pengen kita terus bareng selamanya. Lewatin suka maupun duka, hari-hari biasa maupun hari-hari yang berat, semuanya kita hadapi bersama-sama. Tangan kamu yang selalu menggandeng tanganku, jangan pernah lepas ya? 🫶
 
@@ -439,7 +439,7 @@ Maafin segala kekuranganku ya sayang. Aku janji akan selalu berusaha menjaga hat
 
 Aku sayang kamu, sangat sayang, lebih dari yang bisa aku ucapkan. Semoga kita bisa terus tumbuh bersama, saling melengkapi, dan menua bersama kelak. 💍
 
-Terima kasih sudah mencintaiku apa adanya. Aku sayang kamu selamanya, hari ini, besok, dan seterusnya! 💌❤️`;
+Terima kasih sudah mencintaiku apa adanya. Aku sayang kamu selamanya, hari ini, besok, dan seterusnya! 💌🤍`;
 
 function mulaiKetik() {
     var tempat = document.getElementById('isiPesan');
